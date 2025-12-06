@@ -29,7 +29,7 @@ export function PomodoroTimer() {
 
         {(params.totalSessions || params.sessionDuration) && (
           <div className="mt-2 flex items-center justify-center">
-            <div className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm shadow-lg border border-white/15 flex items-center">
+            <div className="rounded-full bg-white/10 px-4 py-2 text-md font-medium text-white backdrop-blur-sm shadow-lg border border-white/15 flex items-center ">
               {params.totalSessions && (
                 <span className="text-gray-100">
                   Total de sessões: <span className="font-semibold text-gray-200">{params.totalSessions}</span>
@@ -37,7 +37,7 @@ export function PomodoroTimer() {
               )}
 
               {params.totalSessions && params.sessionDuration && (
-                <span className="mx-3 self-stretch w-px bg-white/15" aria-hidden />
+                <span className="mx-3 self-stretch w-px " aria-hidden />
               )}
 
               {params.sessionDuration && (
