@@ -3,7 +3,7 @@
 import { parseAsInteger, parseAsBoolean, parseAsString, useQueryStates } from "nuqs"
 
 export function usePomodoroParams() {
-  const [params] = useQueryStates(
+  const [params, setParams] = useQueryStates(
     {
       duration: parseAsInteger.withDefault(25),
       sessionDuration: parseAsInteger,
@@ -31,5 +31,7 @@ export function usePomodoroParams() {
     studySessions: params.study,
     breakSessions: params.break,
     totalSessions: params.total,
+
+    updateParams: setParams,
   }
 }
