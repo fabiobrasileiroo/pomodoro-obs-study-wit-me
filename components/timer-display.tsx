@@ -8,7 +8,7 @@ interface TimerDisplayProps {
 export function TimerDisplay({ timeLeft, hideText }: TimerDisplayProps) {
   return (
     <div className="text-center">
-      <div className="mb-2 font-mono text-9xl font-bold tracking-wider text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+      <div className="font-mono text-9xl font-bold tracking-wider text-white drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]">
         {formatTime(timeLeft)}
       </div>
 

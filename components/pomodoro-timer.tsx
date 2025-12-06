@@ -29,15 +29,20 @@ export function PomodoroTimer() {
 
         {(params.totalSessions || params.sessionDuration) && (
           <div className="mt-2 flex items-center justify-center">
-            <div className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm shadow-lg border border-white/15">
+            <div className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm shadow-lg border border-white/15 flex items-center">
               {params.totalSessions && (
-                <span className="mr-3">
-                  Total de sessões: <span className="font-semibold">{params.totalSessions}</span>
+                <span className="text-gray-100">
+                  Total de sessões: <span className="font-semibold text-gray-200">{params.totalSessions}</span>
                 </span>
               )}
+
+              {params.totalSessions && params.sessionDuration && (
+                <span className="mx-3 self-stretch w-px bg-white/15" aria-hidden />
+              )}
+
               {params.sessionDuration && (
-                <span>
-                  Duração por sessão: <span className="font-semibold">{params.sessionDuration}</span> min
+                <span className="text-gray-100">
+                  Duração por sessão: <span className="font-semibold text-gray-200">{params.sessionDuration}</span> min
                 </span>
               )}
             </div>
