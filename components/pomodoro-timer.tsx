@@ -29,26 +29,19 @@ export function PomodoroTimer() {
           {params.type === "break" ? "☕ Break Time" : "📚 Focus Time"}
         </div>
 
-        <SessionCounter studySessions={params.studySessions} breakSessions={params.breakSessions} />
+        <SessionCounter
+          studySessions={params.studySessions}
+          breakSessions={params.breakSessions}
+          totalSessions={params.totalSessions}
+          hideBreak={params.hideBreak}
+        />
 
-        {(params.totalSessions || params.sessionDuration) && (
+        {params.sessionDuration && (
           <div className="mt-2 flex items-center justify-center">
-            <div className="rounded-full bg-white/10 px-4 py-2 text-md font-medium text-white backdrop-blur-sm shadow-lg border border-white/15 flex items-center ">
-              {params.totalSessions && (
-                <span className="text-gray-100">
-                  Total de sessões: <span className="font-semibold text-gray-200">{params.totalSessions}</span>
-                </span>
-              )}
-
-              {params.totalSessions && params.sessionDuration && (
-                <span className="mx-3 self-stretch w-px " aria-hidden />
-              )}
-
-              {params.sessionDuration && (
-                <span className="text-gray-100">
-                  Duração por sessão: <span className="font-semibold text-gray-200">{params.sessionDuration}</span> min
-                </span>
-              )}
+            <div className="rounded-full bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm shadow-lg border border-white/15">
+              <span className="text-gray-100">
+                Duração por sessão: <span className="font-semibold text-gray-200">{params.sessionDuration}</span> min
+              </span>
             </div>
           </div>
         )}

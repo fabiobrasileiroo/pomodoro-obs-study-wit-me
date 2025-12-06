@@ -13,11 +13,13 @@ export function usePomodoroParams() {
       study: parseAsInteger.withDefault(0),
       break: parseAsInteger.withDefault(0),
       total: parseAsInteger,
+      hidebreak: parseAsBoolean.withDefault(false),
     },
     {
       urlKeys: {
         autostart: "autostart",
         hidetext: "hidetext",
+        hidebreak: "hidebreak",
       },
     },
   )
@@ -31,6 +33,7 @@ export function usePomodoroParams() {
     studySessions: params.study,
     breakSessions: params.break,
     totalSessions: params.total,
+    hideBreak: params.hidebreak,
 
     updateParams: setParams,
   }
