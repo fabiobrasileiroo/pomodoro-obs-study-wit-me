@@ -21,7 +21,7 @@ export function PomodoroTimer() {
 
         <TimerDisplay timeLeft={timeLeft} hideText={params.hideText} />
 
-        <div className="text-2xl font-medium text-white/80">
+        <div className="text-2xl font-medium mb-2 text-white/80">
           {params.type === "break" ? "☕ Break Time" : "📚 Focus Time"}
         </div>
 
