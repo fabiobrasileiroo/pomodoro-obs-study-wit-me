@@ -6,6 +6,8 @@ import { TimerDisplay } from "@/components/timer-display"
 import { SessionCounter } from "@/components/session-counter"
 import { TimerControls } from "@/components/timer-controls"
 import { WaveIcon } from "@/components/wave-icon"
+import { Input } from "@/components/ui/input"
+import { Checkbox } from "@/components/ui/checkbox"
 import { useState } from "react"
 
 export function PomodoroTimer() {
@@ -85,12 +87,25 @@ export function PomodoroTimer() {
                 const sessionDuration = formData.get("sessionDuration")
                   ? Number(formData.get("sessionDuration"))
                   : undefined
+                const typeValue = formData.get("type") as string | null
+                const type = (typeValue === "pomodoro" || typeValue === "break" ? typeValue : params.type) as
+                  | "pomodoro"
+                  | "break"
+                const autostart = formData.get("autostart") === "on"
+                const hidetext = formData.get("hidetext") === "on"
+                const study = formData.get("study") ? Number(formData.get("study")) : undefined
+                const breakSessions = formData.get("break") ? Number(formData.get("break")) : undefined
 
                 params.updateParams((prev) => ({
                   ...prev,
                   duration: Number.isNaN(duration) ? prev.duration : duration,
                   total: total ?? prev.total,
                   sessionDuration: sessionDuration ?? prev.sessionDuration,
+                  type,
+                  autostart,
+                  hidetext,
+                  study: study ?? prev.study,
+                  break: breakSessions ?? prev.break,
                 }))
 
                 setIsConfigOpen(false)
@@ -100,42 +115,89 @@ export function PomodoroTimer() {
                 <label className="text-xs uppercase tracking-wide text-white/60" htmlFor="duration">
                   Duração do timer (min)
                 </label>
-                <input
-                  id="duration"
-                  name="duration"
-                  type="number"
-                  min={1}
-                  defaultValue={params.duration}
-                  className="w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none focus:border-white/40"
-                />
+                <Input id="duration" name="duration" type="number" min={1} defaultValue={params.duration} />
+              </div>
+
+              <div className="space-y-1">
+                <span className="text-xs uppercase tracking-wide text-white/60">Modo</span>
+                <div className="mt-1 flex gap-4 text-sm">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="pomodoro"
+                      checked={params.type === "pomodoro"}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          params.updateParams({ type: "pomodoro" })
+                        }
+                      }}
+                      className="cursor-pointer"
+                    />
+                    <span>Pomodoro</span>
+                  </label>
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="type"
+                      value="break"
+                      checked={params.type === "break"}
+                      onChange={(e) => {
+                        if (e.target.checked) {
+                          params.updateParams({ type: "break" })
+                        }
+                      }}
+                      className="cursor-pointer"
+                    />
+                    <span>Break</span>
+                  </label>
+                </div>
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs uppercase tracking-wide text-white/60" htmlFor="total">
                   Total de sessões (opcional)
                 </label>
-                <input
-                  id="total"
-                  name="total"
-                  type="number"
-                  min={1}
-                  defaultValue={params.totalSessions ?? ""}
-                  className="w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none focus:border-white/40"
-                />
+                <Input id="total" name="total" type="number" min={1} defaultValue={params.totalSessions ?? ""} />
               </div>
 
               <div className="space-y-1">
                 <label className="text-xs uppercase tracking-wide text-white/60" htmlFor="sessionDuration">
                   Duração por sessão (opcional)
                 </label>
-                <input
+                <Input
                   id="sessionDuration"
                   name="sessionDuration"
                   type="number"
                   min={1}
                   defaultValue={params.sessionDuration ?? ""}
-                  className="w-full rounded-md border border-white/10 bg-black/20 px-3 py-2 text-sm outline-none focus:border-white/40"
                 />
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <label className="flex items-center gap-2">
+                  <Checkbox name="autostart" defaultChecked={params.autoStart} />
+                  <span className="text-xs">Auto start</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <Checkbox name="hidetext" defaultChecked={params.hideText} />
+                  <span className="text-xs">Esconder texto</span>
+                </label>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                <div className="space-y-1">
+                  <label className="text-xs uppercase tracking-wide text-white/60" htmlFor="study">
+                    Sessões de estudo
+                  </label>
+                  <Input id="study" name="study" type="number" min={0} defaultValue={params.studySessions} />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs uppercase tracking-wide text-white/60" htmlFor="break">
+                    Breaks
+                  </label>
+                  <Input id="break" name="break" type="number" min={0} defaultValue={params.breakSessions} />
+                </div>
               </div>
 
               <button
