@@ -1,7 +1,8 @@
 # Pomodoro Timer - Estude Comigo
 
 Timer Pomodoro personalizado com a estética da Grande Onda de Kanagawa, ideal para uso no OBS.
-
+<img width="1917" height="997" alt="Captura de tela de 2025-12-06 01-59-51" src="https://github.com/user-attachments/assets/e7a39f9d-3fd1-4b17-8519-73c0fc90ef3c" />
+<img width="1917" height="997" alt="Captura de tela de 2025-12-06 02-00-01" src="https://github.com/user-attachments/assets/72c296ba-b9de-4356-8f34-57cb94916d4f" />
 ## Arquitetura
 
 Projeto refatorado com estrutura clean e performática:
