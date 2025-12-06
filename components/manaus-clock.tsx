@@ -32,7 +32,7 @@ export function ManausClock() {
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="text-6xl font-bold text-white tabular-nums tracking-wide">{time}</div>
-      <div className="text-sm font-medium uppercase tracking-wider text-white/60">Horário de Manaus</div>
+      <div className="text-md font-medium uppercase tracking-wider text-white/80">Horário de Manaus</div>
     </div>
   )
 }
