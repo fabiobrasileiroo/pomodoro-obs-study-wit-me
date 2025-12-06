@@ -13,7 +13,7 @@ Projeto refatorado com estrutura clean e performática:
 
 ### Estrutura de pastas
 
-``` bash
+```bash
 app/
   page.tsx                    # Página principal com Suspense
 components/
@@ -36,32 +36,38 @@ lib/
 Configure o timer através dos parâmetros na URL:
 
 - `duration` - Duração em minutos (padrão: 25)
+- `sessionDuration` - Duração em minutos de cada sessão (padrão: 25)
 - `autostart` - Iniciar automaticamente (true/false)
 - `type` - Tipo de sessão ('pomodoro' ou 'break')
 - `hidetext` - Ocultar texto "Estude comigo" (true/false)
 - `study` - Número de sessões de estudo completadas (padrão: 0)
 - `break` - Número de breaks completados (padrão: 0)
+- `total` - Número total de sessões planejadas (padrão: 5)
 
 ### Exemplos de URL
 
 **Pomodoro de 50 minutos (auto-start):**
+
 ```
-http://localhost:3000/?duration=50&autostart=true&type=pomodoro&study=3&break=2
+http://localhost:3000/?duration=50&sessionDuration=50&autostart=true&type=pomodoro&study=3&break=2&total=5
 ```
 
 **Break de 10 minutos (auto-start):**
+
 ```
-http://localhost:3000/?duration=10&autostart=true&type=break&study=3&break=2
+http://localhost:3000/?duration=10&sessionDuration=10&autostart=true&type=break&study=3&break=2&total=5
 ```
 
 **Pomodoro padrão (25 minutos, sem auto-start):**
+
 ```
-http://localhost:3000/?duration=25&autostart=false&type=pomodoro
+http://localhost:3000/?duration=25&sessionDuration=25&autostart=false&type=pomodoro&total=5
 ```
 
 **Timer limpo (sem texto):**
+
 ```
-http://localhost:3000/?duration=25&autostart=true&hidetext=true
+http://localhost:3000/?duration=25&sessionDuration=25&autostart=true&hidetext=true
 ```
 
 ## Uso no OBS
@@ -75,9 +81,11 @@ http://localhost:3000/?duration=25&autostart=true&hidetext=true
 ### Configuração recomendada no OBS:
 
 **Cena "Pomodoro 50min":**
+
 - URL: `sua-url/?duration=50&autostart=true&type=pomodoro&study=3&break=2`
 
 **Cena "Break 10min":**
+
 - URL: `sua-url/?duration=10&autostart=true&type=break&study=3&break=3`
 
 Assim você só precisa alternar entre as cenas e o timer começa automaticamente! Os contadores de sessão ajudam a acompanhar seu progresso.

@@ -16,7 +16,7 @@ export function PomodoroTimer() {
 
   return (
     <div className="relative flex min-h-screen items-center justify-center bg-black">
-      <div className="relative z-10 flex flex-col items-center gap-8">
+      <div className="relative z-10 flex flex-col items-center gap-8 pb-20">
         {/* <WaveIcon type={params.type} /> */}
 
         <TimerDisplay timeLeft={timeLeft} hideText={params.hideText} />
@@ -26,6 +26,23 @@ export function PomodoroTimer() {
         </div>
 
         <SessionCounter studySessions={params.studySessions} breakSessions={params.breakSessions} />
+
+        {(params.totalSessions || params.sessionDuration) && (
+          <div className="mt-2 flex items-center justify-center">
+            <div className="rounded-full bg-white/10 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm shadow-lg border border-white/15">
+              {params.totalSessions && (
+                <span className="mr-3">
+                  Total de sessões: <span className="font-semibold">{params.totalSessions}</span>
+                </span>
+              )}
+              {params.sessionDuration && (
+                <span>
+                  Duração por sessão: <span className="font-semibold">{params.sessionDuration}</span> min
+                </span>
+              )}
+            </div>
+          </div>
+        )}
 
         <TimerControls isRunning={isRunning} onToggle={toggleTimer} onReset={resetTimer} />
       </div>
