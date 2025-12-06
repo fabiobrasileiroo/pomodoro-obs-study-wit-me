@@ -13,7 +13,7 @@ Projeto refatorado com estrutura clean e performática:
 
 ### Estrutura de pastas
 
-\`\`\`
+``` bash
 app/
   page.tsx                    # Página principal com Suspense
 components/
@@ -27,7 +27,7 @@ hooks/
   use-timer.ts                # Lógica do timer
 lib/
   utils.ts                    # Utilitários (cn, formatTime)
-\`\`\`
+```
 
 ## Como usar
 
@@ -45,24 +45,24 @@ Configure o timer através dos parâmetros na URL:
 ### Exemplos de URL
 
 **Pomodoro de 50 minutos (auto-start):**
-\`\`\`
+```
 http://localhost:3000/?duration=50&autostart=true&type=pomodoro&study=3&break=2
-\`\`\`
+```
 
 **Break de 10 minutos (auto-start):**
-\`\`\`
+```
 http://localhost:3000/?duration=10&autostart=true&type=break&study=3&break=2
-\`\`\`
+```
 
 **Pomodoro padrão (25 minutos, sem auto-start):**
-\`\`\`
+```
 http://localhost:3000/?duration=25&autostart=false&type=pomodoro
-\`\`\`
+```
 
 **Timer limpo (sem texto):**
-\`\`\`
+```
 http://localhost:3000/?duration=25&autostart=true&hidetext=true
-\`\`\`
+```
 
 ## Uso no OBS
 
